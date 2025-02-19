@@ -34,15 +34,12 @@ const user_CP_code = document.getElementById("cp_code")
  * @returns true or false
 */
 let proceed = () => {
-    if (userAge >= 0 && userAge <= 130 && userTripLength > 0) {
+    if (userTripLength > 0 && userName.value.length >= 4) {
         return true;
     } else {
         return false;
     }
 }
-console.log(proceed());
-
-/* alert("ATTENZIONE! Inserire numeri validi") */
 
 /**
  * Calculates a pondered price with correct display
@@ -52,9 +49,9 @@ console.log(proceed());
 */
 function ticketPriceCalc(age, KMs) {
     let price = KMs * 0.21
-    if (age < 18) {
+    if (age === "opt-min") {
         price *= 0.8
-    } else if (age >= 65) {
+    } else if (age === "opt-max") {
         price *= 0.6
     }
 
@@ -94,7 +91,7 @@ submit_btn.addEventListener("click", function () {
     console.log(userSubmitAge.value);
 
     if (userName.value.length > 0) {
-        document.getElementById("user_name").innerText = userName.value
+        userNameDisplay.innerText = userName.value
     }
 
     if (proceed() === true) {
@@ -109,13 +106,39 @@ submit_btn.addEventListener("click", function () {
         user_CP_code.innerText = randCode()
         console.log(randCode());
 
+        const ticketType = document.getElementById("ticket_type")
+
+        if (userAge === "opt-min") {
+            ticketType.innerText = "Tariffa Ridotta Junior"
+            console.log(ticketType.innerText);
+
+        } else if (userAge === "opt-max") {
+            ticketType.innerText = "Tariffa Ridotta Senior"
+            console.log(ticketType.innerText);
+
+        } else if (userAge === "opt-mid") {
+            ticketType.innerText = "Tariffa Regolare"
+            console.log(ticketType.innerText);
+        }
+
     }
 })
 
+const delet_btn = document.getElementById("erase")
 
+delet_btn.addEventListener("click", function () {
+    userName.value = null
+    userInputKMs.value = null
+    userSubmitAge.value = null
 
-/* id="ticket_type" > age */
+    ticketPrice = null
 
+    /* priceDisplay.innerHTML = undefined
+    userNameDisplay.innerHTML = undefined
+    ticketType.innerHTML = undefined
+    user_CP_code.innerHTML = undefined
+    userWagon.innerHTML= undefined */
+})
 /*  id="erase" */
 
 /* id="wagon"  > rand numb 1-12*/
