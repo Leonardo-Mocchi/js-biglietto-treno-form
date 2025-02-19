@@ -6,11 +6,13 @@
 
 * {
     box-sizing: border-box;
+    transition: all .25s ease-in;
 }
 
 body {
     background-color: var(--train-ticket-main);
 }
+
 
 .main_color {
     color: var(--train-ticket-main);
@@ -24,10 +26,43 @@ body {
     background-color: var(--train-ticket-main-lighter);
 }
 
-@media screen and (max-width 420px) {
+#card1 {
+    margin: 5%;
+}
+
+#card2 {
+    margin: 5%;
+}
+
+@media screen and (max-width: 419.99px) {
     .input_top {
         max-width: 75%;
+        min-width: 20%;
     }
 }
 
-@media screen and (min-width 420px) {}
+@media screen and (min-width: 420px) {
+    #card1 {
+        margin: 5% 8%;
+    }
+
+    #card2 {
+        margin: 5% 8%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .weird_guys {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #card1 {
+        margin: 5% 13%;
+    }
+
+    #card2 {
+        margin: 5% 13%;
+    }
+}

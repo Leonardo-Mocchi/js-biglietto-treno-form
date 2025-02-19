@@ -16,32 +16,37 @@ Rispettate l'ordine delle milestone, non passare alla seconda se la prima non é
 Se non vi sentite particolarmente creativi, questa (vedi screenshot) potrebbe essere un’implementazione da seguire per il secondo milestone.
 Potete scegliere di implementare una soluzione completamente diversa oppure simile, ma in ogni caso cercate di farla vostra. */
 
-const userAge = Number(prompt("Inserire la propria età", "solo numeri!"))
-console.log(userAge);
+const userName = document.getElementById("user_name_input")
+let userNameDisplay = document.getElementById("user_name")
 
-const userTripLength = Number(prompt("Inserire il numero di kilometri da percorrere", "solo numeri!"))
-console.log(userTripLength);
+const userInputKMs = document.getElementById("user_input_km")
+let userTripLength;
+
+const userSubmitAge = document.getElementById("user_input_age")
+let userAge;
+
+
 
 /**
  * Verifies if the User inputs are valid
  * @returns true or false
- */
+*/
 let proceed = () => {
     if (userAge >= 0 && userAge <= 130 && userTripLength > 0) {
         return true;
     } else {
-        alert("ATTENZIONE! Inserire numeri validi")
         return false;
     }
 }
 console.log(proceed());
+/* alert("ATTENZIONE! Inserire numeri validi") */
 
 /**
  * Calculates a pondered price with correct display
  * @param {*} age price varies with age ranges
  * @param {*} KMs price depends on KMs
  * @returns the exact price for teh ticket
- */
+*/
 function ticketPriceCalc(age, KMs) {
     let price = KMs * 0.21
     if (age < 18) {
@@ -68,15 +73,70 @@ function ticketPriceCalc(age, KMs) {
         return
     }
 }
-const ticketPrice = ticketPriceCalc(userAge, userTripLength)
-console.log(ticketPrice);
+/* const ticketPrice = ticketPriceCalc(userAge, userTripLength)
+console.log(ticketPrice); */
 
-if (proceed() === true) {
+/* if (proceed() === true) {
     alert("Il prezzo stimato ammonta a: " + ticketPrice + "€")
-}
+} */
 
+const submit_btn = document.getElementById("generate")
+
+submit_btn.addEventListener("click", function () {
+    console.log(userName.value);
+    console.log(userInputKMs.value);
+    console.log(userSubmitAge.value);
+
+    if (userName.value.length > 0) {
+        document.getElementById("user_name").innerText = userName.value
+    }
+
+    if (proceed() === true) {
+        userAge = userSubmitAge.value
+        userTripLength = userInputKMs.value
+
+        const ticketPrice = ticketPriceCalc(userAge, userTripLength)
+        console.log(ticketPrice);
+
+        const priceDisplay = document.getElementById("ticket_price_display")
+        priceDisplay.innerHTML = ticketPrice.value
+    }
+})
+/* const inputName = document.getElementById("name")
+const submitName = document.getElementById("submit_name")
+const paragraphName = document.getElementById("par_name")
+submitName.addEventListener("click", function () {
+    console.log(inputName.value);
+    
+    if (inputName.value.length > 0) {
+        paragraphName.innerHTML = inputName.value
+        }
+        }) */
+
+
+
+
+/* id="user_name_input"*/
 /* id="user_name" */
+
+
+/* id="user_input_km" */
+
+/* id="user_input_age" */
+
 /* id="ticket_type" > age */
+
+/* const priceDisplay = document.getElementById("ticket_price_display")
+const submit_btn = document.getElementById("generate")
+
+submit_btn.addEventListener("click", function () {
+
+    priceDisplay.innerHTML = ticketPrice.value
+}) */
+/* id="ticket_price_display" */
+
+
+/* id="generate"    id="erase" */
+
 /* id="wagon"  > rand numb 1-12*/
 /* id="cp_code" > rand numb 5 numbers 00000*/
-/* id="ticket_price_display" */
