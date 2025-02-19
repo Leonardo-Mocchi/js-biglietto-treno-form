@@ -1,0 +1,33 @@
+:root {
+    --train-ticket-main: #b91450;
+    --train-passenger-bg: #808080;
+    --train-ticket-main-lighter: #fcd1e1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--train-ticket-main);
+}
+
+.main_color {
+    color: var(--train-ticket-main);
+}
+
+.input_top {
+    border-color: var(--train-ticket-main);
+}
+
+.bg_light {
+    background-color: var(--train-ticket-main-lighter);
+}
+
+@media screen and (max-width 420px) {
+    .input_top {
+        max-width: 75%;
+    }
+}
+
+@media screen and (min-width 420px) {}

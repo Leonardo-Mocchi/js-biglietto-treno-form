@@ -74,3 +74,9 @@ console.log(ticketPrice);
 if (proceed() === true) {
     alert("Il prezzo stimato ammonta a: " + ticketPrice + "€")
 }
+
+/* id="user_name" */
+/* id="ticket_type" > age */
+/* id="wagon"  > rand numb 1-12*/
+/* id="cp_code" > rand numb 5 numbers 00000*/
+/* id="ticket_price_display" */
