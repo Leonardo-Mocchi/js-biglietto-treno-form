@@ -20,12 +20,14 @@ const userName = document.getElementById("user_name_input")
 let userNameDisplay = document.getElementById("user_name")
 
 const userInputKMs = document.getElementById("user_input_km")
-let userTripLength;
+let userTripLength = userInputKMs.value
 
 const userSubmitAge = document.getElementById("user_input_age")
-let userAge;
+let userAge = userSubmitAge.value
 
+const userWagon = document.getElementById("wagon")
 
+const user_CP_code = document.getElementById("cp_code")
 
 /**
  * Verifies if the User inputs are valid
@@ -39,6 +41,7 @@ let proceed = () => {
     }
 }
 console.log(proceed());
+
 /* alert("ATTENZIONE! Inserire numeri validi") */
 
 /**
@@ -73,12 +76,15 @@ function ticketPriceCalc(age, KMs) {
         return
     }
 }
-/* const ticketPrice = ticketPriceCalc(userAge, userTripLength)
-console.log(ticketPrice); */
 
-/* if (proceed() === true) {
-    alert("Il prezzo stimato ammonta a: " + ticketPrice + "€")
-} */
+function randWagon() {
+    return Math.floor(Math.random() * 11) + 1;
+}
+
+function randCode() {
+    return Math.floor(Math.random() * 99998) + 1;
+}
+
 
 const submit_btn = document.getElementById("generate")
 
@@ -92,51 +98,25 @@ submit_btn.addEventListener("click", function () {
     }
 
     if (proceed() === true) {
-        userAge = userSubmitAge.value
-        userTripLength = userInputKMs.value
-
         const ticketPrice = ticketPriceCalc(userAge, userTripLength)
+        const priceDisplay = document.getElementById("ticket_price_display")
+        priceDisplay.innerText = ticketPrice + "€"
         console.log(ticketPrice);
 
-        const priceDisplay = document.getElementById("ticket_price_display")
-        priceDisplay.innerHTML = ticketPrice.value
+        userWagon.innerText = randWagon();
+        console.log(randWagon());
+
+        user_CP_code.innerText = randCode()
+        console.log(randCode());
+
     }
 })
-/* const inputName = document.getElementById("name")
-const submitName = document.getElementById("submit_name")
-const paragraphName = document.getElementById("par_name")
-submitName.addEventListener("click", function () {
-    console.log(inputName.value);
-    
-    if (inputName.value.length > 0) {
-        paragraphName.innerHTML = inputName.value
-        }
-        }) */
 
 
-
-
-/* id="user_name_input"*/
-/* id="user_name" */
-
-
-/* id="user_input_km" */
-
-/* id="user_input_age" */
 
 /* id="ticket_type" > age */
 
-/* const priceDisplay = document.getElementById("ticket_price_display")
-const submit_btn = document.getElementById("generate")
-
-submit_btn.addEventListener("click", function () {
-
-    priceDisplay.innerHTML = ticketPrice.value
-}) */
-/* id="ticket_price_display" */
-
-
-/* id="generate"    id="erase" */
+/*  id="erase" */
 
 /* id="wagon"  > rand numb 1-12*/
 /* id="cp_code" > rand numb 5 numbers 00000*/
