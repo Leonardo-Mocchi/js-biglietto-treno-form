@@ -21,7 +21,7 @@
     <section id="card1" class="d-flex flex-column justify-content-center">
         <h1 class="text-center text-light">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
         <div class="card">
-            <div class="card-body">
+            <form id="form" class="card-body">
                 <div class="row row-cols-1 row-cols-sm-3 g-2 mx-sm-3 g-sm-4 align-center justify-content-between">
                     <div class="d-flex justify-content-between flex-sm-column">
                         <h6 class="flex-shrink-0 align-self-center text-nowrap main_color">Nome <span
@@ -29,6 +29,7 @@
                                 Cognome</span></h6>
                         <input id="user_name_input" class="input_top text-center" type="text"
                             placeholder="Inserisci il tuo nome">
+                        <!-- user inpout name -->
                     </div>
                     <div class="d-flex justify-content-between flex-sm-column">
                         <h6 class="flex-shrink-0 align-self-center text-nowrap main_color">KM <span
@@ -55,7 +56,7 @@
                     <input type="submit" id="generate" class="main_color m-3 input_top" value="Genera">
                     <button id="erase" class="main_color m-3 input_top">Annulla</button>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 
@@ -66,7 +67,6 @@
                 <div class="row">
                     <div class="col-4">
                         <h5 class="text-nowrap">DETTAGLI <span class="d-none d-md-inline">PASSEGGERO</span></h5>
-
                     </div>
                 </div>
                 <div class="row">

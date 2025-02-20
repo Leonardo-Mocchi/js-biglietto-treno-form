@@ -24,6 +24,7 @@ let userTripLength = userInputKMs.value
 
 const userSubmitAge = document.getElementById("user_input_age")
 let userAge = userSubmitAge.value
+userSubmitAge.value = null
 
 const userWagon = document.getElementById("wagon")
 
@@ -82,10 +83,16 @@ function randCode() {
     return Math.floor(Math.random() * 99998) + 1;
 }
 
-
+const form = document.getElementById("form")
 const submit_btn = document.getElementById("generate")
 
+
 submit_btn.addEventListener("click", function () {
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+    })
+
     console.log(userName.value);
     console.log(userInputKMs.value);
     console.log(userSubmitAge.value);
@@ -124,6 +131,7 @@ submit_btn.addEventListener("click", function () {
     }
 })
 
+
 const delet_btn = document.getElementById("erase")
 
 delet_btn.addEventListener("click", function () {
@@ -131,13 +139,13 @@ delet_btn.addEventListener("click", function () {
     userInputKMs.value = null
     userSubmitAge.value = null
 
-    ticketPrice = null
+    ticketPrice = NaN
 
-    /* priceDisplay.innerHTML = undefined
-    userNameDisplay.innerHTML = undefined
-    ticketType.innerHTML = undefined
-    user_CP_code.innerHTML = undefined
-    userWagon.innerHTML= undefined */
+    priceDisplay.innerHTML = "-"
+    userNameDisplay.innerHTML = "-"
+    ticketType.innerHTML = "-"
+    user_CP_code.innerHTML = "-"
+    userWagon.innerHTML = "-"
 })
 /*  id="erase" */
 
