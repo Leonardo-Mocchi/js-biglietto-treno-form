@@ -58,7 +58,7 @@ function ticketPriceCalc(age, KMs) {
 
     let humanNumbers;
     if (price < 10) {
-        humanNumbers = '0' + price.toPrecision(2);
+        humanNumbers = '0' + price.toPrecision(3);
         return humanNumbers
     } else if (price >= 10 && price < 100) {
         humanNumbers = price.toPrecision(4)
@@ -67,12 +67,12 @@ function ticketPriceCalc(age, KMs) {
         humanNumbers = price.toPrecision(5)
         return humanNumbers
     } else if (price >= 1000 && price < 10000) {
-        humanNumbers = price.toPrecision(6)
+        humanNumbers = price.toPrecision(5)
         return humanNumbers
-    } else if (price >= 10000) {
+    } /* else if (price >= 10000) {
         alert("ATTENZIONE! Non copriamo tratte così lunghe!")
         return
-    }
+    } */
 }
 
 function randWagon() {
@@ -80,13 +80,18 @@ function randWagon() {
 }
 
 function randCode() {
-    return Math.floor(Math.random() * 99998) + 1;
+    return (('0000' + (Math.floor(Math.random() * 99998) + 1)).slice(-5));
 }
 
 const form = document.getElementById("form")
 const submit_btn = document.getElementById("generate")
 
+let ticketPrice = ticketPriceCalc(userAge, userTripLength)
+const priceDisplay = document.getElementById("ticket_price_display")
 
+const ticketType = document.getElementById("ticket_type")
+
+/* if (proceed() === true) { */
 submit_btn.addEventListener("click", function () {
 
     form.addEventListener("submit", function (event) {
@@ -101,52 +106,53 @@ submit_btn.addEventListener("click", function () {
         userNameDisplay.innerText = userName.value
     }
 
-    if (proceed() === true) {
-        const ticketPrice = ticketPriceCalc(userAge, userTripLength)
-        const priceDisplay = document.getElementById("ticket_price_display")
-        priceDisplay.innerText = ticketPrice + "€"
-        console.log(ticketPrice);
+    ticketPrice = ticketPriceCalc(userAge, userTripLength)
 
-        userWagon.innerText = randWagon();
-        console.log(randWagon());
+    priceDisplay.innerText = ticketPrice + "€"
+    console.log(ticketPrice);
 
-        user_CP_code.innerText = randCode()
-        console.log(randCode());
+    userWagon.innerText = randWagon();
+    console.log(randWagon());
 
-        const ticketType = document.getElementById("ticket_type")
+    user_CP_code.innerText = randCode()
 
-        if (userAge === "opt-min") {
-            ticketType.innerText = "Tariffa Ridotta Junior"
-            console.log(ticketType.innerText);
+    console.log(randCode());
 
-        } else if (userAge === "opt-max") {
-            ticketType.innerText = "Tariffa Ridotta Senior"
-            console.log(ticketType.innerText);
+    if (userAge === "opt-min") {
+        ticketType.innerText = "Tariffa Ridotta Junior"
+        console.log(ticketType.innerText);
 
-        } else if (userAge === "opt-mid") {
-            ticketType.innerText = "Tariffa Regolare"
-            console.log(ticketType.innerText);
-        }
+    } else if (userAge === "opt-max") {
+        ticketType.innerText = "Tariffa Ridotta Senior"
+        console.log(ticketType.innerText);
 
+    } else if (userAge === "opt-mid") {
+        ticketType.innerText = "Tariffa Regolare"
+        console.log(ticketType.innerText);
     }
+
 })
 
 
 const delet_btn = document.getElementById("erase")
 
 delet_btn.addEventListener("click", function () {
-    userName.value = null
-    userInputKMs.value = null
+    userName.value = ""
+    userInputKMs.value = 0
     userSubmitAge.value = null
 
-    ticketPrice = NaN
+    ticketPriceCalc(userAge, userTripLength)
+    console.log(ticketPriceCalc());
 
-    priceDisplay.innerHTML = "-"
-    userNameDisplay.innerHTML = "-"
-    ticketType.innerHTML = "-"
-    user_CP_code.innerHTML = "-"
-    userWagon.innerHTML = "-"
+    priceDisplay.innerText = "-"
+    userNameDisplay.innerText = "-"
+    ticketType.innerText = "-"
+    user_CP_code.innerText = "-"
+    userWagon.innerText = "-"
 })
+/* } */
+
+
 /*  id="erase" */
 
 /* id="wagon"  > rand numb 1-12*/
